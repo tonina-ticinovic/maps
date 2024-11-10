@@ -6,6 +6,7 @@ export class User {
     lat: number;
     lng: number;
   };
+  color: string = 'red';
 
   // we want to randomly generate a name and location
   //   constructor(name: string, location: { lat: number; lng: number }) {
@@ -19,5 +20,9 @@ export class User {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude()),
     };
+  }
+
+  getMarkerContent(): string {
+    return `<h3>User Name: ${this.name}</h3>`;
   }
 }

@@ -1,8 +1,10 @@
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
+  getMarkerContent(): string;
+  color: string;
 }
 
 export class CustomMap {
@@ -44,10 +46,11 @@ export class CustomMap {
 
     marker.addListener('click', () => {
       const infoWindow = new google.maps.InfoWindow({
-        content:
-          mappable.location.lat.toString() +
-          ', ' +
-          mappable.location.lng.toString(),
+        content: `
+          <div style="color:${mappable.color}">
+            ${mappable.getMarkerContent()}
+          </div>
+        `,
       });
 
       infoWindow.open(this.googleMap, marker);
