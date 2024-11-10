@@ -42,12 +42,15 @@ export class CustomMap {
       },
     });
 
-    // marker.addListener('click', () => {
-    //   const infoWindow = new google.maps.InfoWindow({
-    //     content: mappable.markerContent(),
-    //   });
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content:
+          mappable.location.lat.toString() +
+          ', ' +
+          mappable.location.lng.toString(),
+      });
 
-    //   infoWindow.open(this.googleMap, marker);
-    // });
+      infoWindow.open(this.googleMap, marker);
+    });
   }
 }
